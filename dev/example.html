@@ -206,7 +206,7 @@
 
             progressBar.classList.add('hidden');
 
-            message.innerText = '❌ Error ' + response.code;
+            message.innerText = '❌ Error ' + (typeof response === 'string' ? response : response.code);
             message.classList.remove('hidden');
 
             spinner.classList.add('hidden');

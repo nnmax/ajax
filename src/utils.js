@@ -170,6 +170,26 @@ module.exports = class Utils {
       }, false);
 
       /**
+       * Detect if the browser supports the `cancel` event
+       */
+      if ('oncancel' in inputElement) {
+        /**
+         * Add oncancel listener for «choose file» pop-up
+         */
+        inputElement.addEventListener('cancel', () => {
+          /**
+           * Reject promise if user canceled file selection
+           */
+          reject('User canceled file selection');
+
+          /**
+           * Remove element from a DOM
+           */
+          document.body.removeChild(inputElement);
+        });
+      }
+
+      /**
        * Fire click event on «input file» field
        */
       inputElement.click();
